@@ -1,35 +1,35 @@
-# Naam Proefopdracht
-*Let goed bij het maken, schrijven en bijhouden van dit document op de **[prestatie-indicatoren](https://drive.google.com/drive/folders/1y8l0Zr4E8b6gYJui_pSzQaoWr-gEr6JN?usp=sharing)**. Deze toon je aan in dit document.*
+# Procedurally Generated Dungeon
+[Qualification file](https://drive.google.com/open?id=1TVyQebUYA6txEakMrj76kg2Z0es4XqVa)
 
-Hier komt een korte beschrijving van de proefopdracht. Wat heb je precies gedaan? 
+In this test assignment i created a Procedural Dungeon Generator.
+I used Seeding and Perlin noise to generate the dungeon.
 
 ## Features
-Wanneer je een specifiek onderdeel wilt uitlichten kun je dat in deze sectie benoemen.
 
-- [Awesome Algoritme](link)
-- [Specifieke Mechanic](link)
-- [Iets unieks waar je trots op bent binnen de project](link)
+- [Seeding](link)
+- [Perlin noise](link)
 
-## Software Anaylse 
-Welke software heb je voor deze proefopdracht onderzocht? En waarom heb je uiteindelijk gekozen voor de gekozen Software. Benoem hier specifieke argumenten.
+## Software Anaylsis
 
-## Leerdoelen 
-Wat wil je bereiken met dit project? Formuleer dit kort, krachtig en haalbaar.
-- Het Flood-Fill algoritme snappen en toepassen
-- Het ontwikkelen van een generieke FSM.
-- etc. etc.
+For this test assignment i will be using Unity C#.
+I chose Unity C# for a couple of reasons.
+- Unity allows me to create this assignment in a three dimensional space, which will be an extra challenge for me.
+- I can learn a lot about Unity, since i only use it when it is required.
+- Using & creating two dimensional arrays in C# is fairly easy compared to two dimensional arrays in JavaScript.
+- After some research, seeding in JavaScript seems to take weeks to write correctly.
 
-## Planning 
-Je hebt grofweg 2 weken, hoe deel je deze twee weken in. Wat plan je wanneer om precies te doen?
+## Learning goals
 
-| | maandag | dinsdag | woensdag | donderdag | vrijdag |
+- Seeding.
+- Perlin noise generation.
+
+## Schedule
+
+| | Monday | Tuesday | Wednesday | Thursday | Friday |
 | --- | --- | --- | --- | --- | --- |
-|week 1 |
-|week 2 |
+|week 1 | --- | --- | --- | --- | Documentation |
+|week 2 | Seeding | Perlin noise | Polishing | Portfolio | Portfolio |
 
-## Bronnen
-Welke bronnen heb je gebruikt? Zowel youtube filmpjes als artikelen
+## Sources
 
-- [The Guide To Game Design](link)
-- [Alleatoric Algorithms](link)
-- [Flood-Fill Wikipedia](link)
+- [Seeding](https://docs.unity3d.com/530/Documentation/ScriptReference/Random-seed.html)
