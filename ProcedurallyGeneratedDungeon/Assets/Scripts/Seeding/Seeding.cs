@@ -5,21 +5,21 @@ using UnityEngine;
 public class Seeding : MonoBehaviour {
 
     [SerializeField]
-    private uint mainSeed = 1;
-    [SerializeField]
     // use creatorSeed for seed generation
-    private uint creatorSeed = 2;
+    private uint creatorSeed = 1;
 
-    private string currentSeed = "main";
+    private string currentSeed = "creator";
     private uint maximumLength = 99999999;
 
     private Dictionary<string, Seed> seeds = new Dictionary<string, Seed>();
 
 	void Start () {
+        Random.InitState( (int) creatorSeed);
         seeds.Add("creator", new Seed(creatorSeed));
+        seeds["creator"].SetState(Random.state);
 
-        seeds.Add("main", new Seed(mainSeed));
-        Random.InitState( (int) seeds["main"].GetSeed() );
+        CreateSeed("main");
+        ChangeSeed("main");
     }
 
     // Retrieves next seed value and updates that seeds state.
@@ -40,15 +40,10 @@ public class Seeding : MonoBehaviour {
     {
         string previousSeed = currentSeed;
         ChangeSeed("creator");
-        seeds.Add(seedName, new Seed( (uint) Mathf.Floor(seeds[currentSeed].NextValue() * maximumLength) ));
+        seeds.Add(seedName, new Seed( (uint) (seeds[currentSeed].NextValue() * maximumLength) ));
+        Random.InitState( (int) seeds[seedName].GetSeed() );
+        seeds[seedName].SetState(Random.state);
         ChangeSeed(previousSeed);
-    }
-
-    // Create seed based in input value 
-    public void CreateSeed(string seedName, uint value)
-    {
-        if (value > maximumLength) Debug.Log("Seed not created, inpur value is to long!");
-        else seeds.Add(seedName, new Seed(value));
     }
 
     // Removes seed, cannot remove main & creator seed.

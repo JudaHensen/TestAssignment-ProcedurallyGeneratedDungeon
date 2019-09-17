@@ -10,10 +10,11 @@ public class Seed {
     public Seed(uint _seed)
     {
         seed = _seed;
-        state = Random.state;
     }
 	
     public Random.State GetState() { return state; }
+
+    public void SetState(Random.State _state) { state = _state; }
 
     public uint GetSeed() { return seed; }
 
