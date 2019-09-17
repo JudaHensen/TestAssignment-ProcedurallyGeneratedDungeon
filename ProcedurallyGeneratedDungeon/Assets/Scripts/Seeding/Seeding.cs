@@ -8,12 +8,22 @@ public class Seeding : MonoBehaviour {
     // use creatorSeed for seed generation
     private uint creatorSeed = 1;
 
-    private string currentSeed = "creator";
-    private uint maximumLength = 99999999;
+    [SerializeField]
+    private bool randomCreator = false;
 
+    private string currentSeed = "creator";
+    private readonly uint maximumLength = 99999999;
+
+    // Store all seeds & states
     private Dictionary<string, Seed> seeds = new Dictionary<string, Seed>();
 
+
 	void Start () {
+        if(randomCreator)
+        {
+            creatorSeed = (uint) Random.Range(0, maximumLength);
+        }
+
         Random.InitState( (int) creatorSeed);
         seeds.Add("creator", new Seed(creatorSeed));
         seeds["creator"].SetState(Random.state);
