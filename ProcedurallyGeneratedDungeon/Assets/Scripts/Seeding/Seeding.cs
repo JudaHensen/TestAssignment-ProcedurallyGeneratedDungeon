@@ -18,7 +18,7 @@ public class Seeding : MonoBehaviour {
     private Dictionary<string, Seed> seeds = new Dictionary<string, Seed>();
 
 
-	void Start () {
+	void Awake () {
         if(randomCreator)
         {
             creatorSeed = (uint) Random.Range(0, maximumLength);
@@ -29,7 +29,7 @@ public class Seeding : MonoBehaviour {
         seeds["creator"].SetState(Random.state);
 
         CreateSeed("main");
-        ChangeSeed("main");
+        ChangeSeed("main"); 
     }
 
     // Retrieves next seed value and updates that seeds state.
