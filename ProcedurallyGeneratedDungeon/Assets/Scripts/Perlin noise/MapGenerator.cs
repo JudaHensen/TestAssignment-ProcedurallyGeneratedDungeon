@@ -30,10 +30,12 @@ public class MapGenerator : MonoBehaviour {
     private int minimumRoomSize = 9;
 
     [SerializeField]
-    [Header("Floor & Floor parent")]
+    [Header("Floor & Path & parent")]
     private GameObject basicFloor;
     [SerializeField]
-    private GameObject floorParent;
+    private GameObject parent;
+
+    private Seeding seeding;
 
     // Perlin values
     private float[,] perlinValues;
@@ -41,7 +43,8 @@ public class MapGenerator : MonoBehaviour {
     // Map as string
     private string[,] map;
 
-    private Seeding seeding;
+    // Dungeon rooms
+    private List<Room> rooms = new List<Room>();
 
 
     void Start () {
@@ -59,8 +62,7 @@ public class MapGenerator : MonoBehaviour {
         GeneratePerlinNoise();
         FilterThreshold();
         FilterRooms();
-        //GeneratePaths();
-        PlaceRooms();
+        PlaceMap();
     }
 
     // Removes everything outside of the room threshold.
@@ -74,7 +76,6 @@ public class MapGenerator : MonoBehaviour {
                 {
                     map[i, j] = "floor";
                 }
-                //else map[i, j] = "void";
             }
         }
     }
@@ -123,7 +124,6 @@ public class MapGenerator : MonoBehaviour {
             for (int groupUp = 0; groupUp < mapGroups[y].Count; groupUp++)
             {
                 bool stop = false;
-                //if(stop) break;
 
                 List<Vector2Int> _groupUp = mapGroups[y][groupUp].GetTiles();
 
@@ -170,39 +170,24 @@ public class MapGenerator : MonoBehaviour {
             }
         }
 
-        // parse grouns into 1 list
-        List<TileGroup> rooms = new List<TileGroup>();
-
+        int roomId = 0;
         for(int i = 0; i < dungeonSize.y; i++)
         {
             for(int j = 0; j < mapGroups[i].Count; j++)
             {
-                rooms.Add(mapGroups[i][j]);
-            }
-        }
-
-        // renew map
-        map = new string[dungeonSize.x, dungeonSize.y];
-
-        for(int i = 0; i < rooms.Count; i++)
-        {
-            List<Vector2Int> room = rooms[i].GetTiles();
-            if(room.Count >= minimumRoomSize)
-            {
-                for (int j = 0; j < room.Count; j++)
+                roomId++;
+                if(mapGroups[i][j].Count() >= minimumRoomSize)
                 {
-                    map[room[j].x, room[j].y] = "floor";
+                    rooms.Add(new Room(parent.transform, basicFloor, mapGroups[i][j], tileSize, roomId));
                 }
             }
         }
-
-
+        map = new string[dungeonSize.x, dungeonSize.y];
     }
 
-    // Generate paths
-    private void GeneratePaths()
+    private float Pyth(float a, float b)
     {
-
+        return Mathf.Sqrt( (a * a) + (b * b) );
     }
 
     // Generates a perlin noise map
@@ -224,25 +209,14 @@ public class MapGenerator : MonoBehaviour {
     }
 
     // Place rooms in scene
-    private void PlaceRooms()
+    private void PlaceMap()
     {
-        for (int i = 0; i < dungeonSize.x; i++)
+        // place rooms
+        for (int i = 0; i < rooms.Count; i++)
         {
-            for (int j = 0; j < dungeonSize.y; j++)
-            {
-                if(map[i, j] == "floor")
-                {
-                    GameObject floor = Instantiate(basicFloor, new Vector3(i * tileSize, 0, j * -tileSize), Quaternion.identity);
-                    floor.transform.parent = floorParent.transform;
-                }  
-                else if(map[i, j] == "path")
-                {
-
-                }
-            }
+            rooms[i].Place();
         }
     }
 
-    
 
 }
