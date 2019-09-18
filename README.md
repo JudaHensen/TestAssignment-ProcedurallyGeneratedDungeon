@@ -7,7 +7,7 @@ I used Seeding and Perlin noise to generate the dungeon.
 ## Features
 
 - [Seeding](https://github.com/JudaHensen/TestAssignment-ProcedurallyGeneratedDungeon/tree/master/ProcedurallyGeneratedDungeon/Assets/Scripts/Seeding)
-- [Perlin noise](link)
+- [Perlin noise](https://github.com/JudaHensen/TestAssignment-ProcedurallyGeneratedDungeon/tree/master/ProcedurallyGeneratedDungeon/Assets/Scripts/Perlin%20noise)
 
 ## Software Anaylsis
 
@@ -28,8 +28,9 @@ I chose Unity C# for a couple of reasons.
 | | Monday | Tuesday | Wednesday | Thursday | Friday |
 | --- | --- | --- | --- | --- | --- |
 |week 1 | --- | --- | --- | --- | Documentation |
-|week 2 | Seeding | Perlin noise | Polishing | Portfolio | Portfolio |
+|week 2 | Seeding | Perlin noise | Polishing | --- | --- |
 
 ## Sources
 
 - [Seeding](https://docs.unity3d.com/530/Documentation/ScriptReference/Random-seed.html)
+- [Perlin noise](https://docs.unity3d.com/ScriptReference/Mathf.PerlinNoise.html)
