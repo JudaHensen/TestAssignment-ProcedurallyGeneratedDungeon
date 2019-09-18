@@ -296,7 +296,7 @@ GameObject:
   - component: {fileID: 1487445748}
   - component: {fileID: 1487445749}
   m_Layer: 0
-  m_Name: Perlin noise
+  m_Name: Map Generator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -326,11 +326,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae53fd0272a5e084cb494ae8747f97e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dungeonSize: {x: 30, y: 30}
-  roomSize: 10
-  perlinIncrement: 0.12
+  dungeonSize: {x: 100, y: 100}
+  tileSize: 10
+  perlinIncrement: 0.07
   perlinOffsetMultiplier: 1024
-  roomThreshold: 0.75
+  roomThresholdMinimum: 0
+  roomThreshholdMaximum: 0.3
+  minimumRoomSize: 12
   basicFloor: {fileID: 100000, guid: c3b9132feaaf6fd4fb7f926b58d9b5e1, type: 3}
   floorParent: {fileID: 252845095}
 --- !u!1 &1645381884
@@ -389,7 +391,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8e86338d158e4044878159ab61ec370, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  creatorSeed: 1
+  creatorSeed: 91629312
   randomCreator: 1
 --- !u!4 &1973414013
 Transform:
